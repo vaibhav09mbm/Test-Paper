@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -8,20 +9,21 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class TestNDTV {
+public class TestStackOverflow {
 
 	WebDriver driver;
-
+    File driverExe = new File ("src/main/resources/chromedriver.exe");
 	@Test
 	public void testHref() throws InterruptedException {
 
+		System.out.println(driverExe.getAbsolutePath());
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\vaibhav.khandelwal\\eclipse-workspace\\test-paper\\src\\main\\resources\\chromedriver.exe");
+				driverExe.getAbsolutePath());
 
 		driver = new ChromeDriver();
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		driver.get("https://www.ndtv.com/business");
-		NDTV ndtvPage = new NDTV(driver);
+		driver.get("https://stackoverflow.com/tags");
+		Stackover stackOve = new NDTV(driver);
 		List<WebElement> href =
 				driver.findElements(ndtvPage.headerMenu);
         href.stream().forEach(y -> System.out.println(y.getAttribute("href")));
