@@ -13,7 +13,7 @@ public class NewTest {
 	@Parameters({ "browser" })
 	public void testGoogle(String browser) throws InterruptedException, MalformedURLException {
 		bf = new BrowserFactory(browser);
-		bf.getDriver().get("https://www.facebook.com");
+		bf.getDriver().get("https://www.google.com");
 		pf = new PageFactory(bf.getDriver());
 		GooglePage gp = pf.getGooglePage();
 		gp.typeInSearch("hello");
